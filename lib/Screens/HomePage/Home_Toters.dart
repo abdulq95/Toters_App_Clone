@@ -1,7 +1,9 @@
 import 'package:carousel_images/carousel_images.dart';
 import 'package:flutter/material.dart';
-import 'Data.dart';
-import 'Food_Page.dart';
+import '../../AppData/Data.dart';
+import '../ResturantPage/Food_Page.dart';
+import '../SearchPage/SearchPage.dart';
+import '../ProfilePage/TotersProfile.dart';
 
 class TotersClone extends StatefulWidget {
   const TotersClone({Key? key}) : super(key: key);
@@ -11,122 +13,19 @@ class TotersClone extends StatefulWidget {
 }
 
 class _TotersCloneState extends State<TotersClone> {
-  int buttonSelected = 1;
+  bool buttonSelected = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: Container(
-        width: double.infinity,
-        height: 70,
-        decoration: BoxDecoration(color: Colors.white),
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.person_outline),
-                    iconSize: 30,
-                    color: buttonSelected == 1 ? Colors.grey : Colors.red,
-                    onPressed: () {
-                      setState() {
-                        buttonSelected += 2;
-                      }
-
-                      ;
-                      print('home');
-                    },
-                  ),
-                  Text(
-                    "حساب",
-                    style: TextStyle(
-                        color: Colors.black45,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.list_alt_outlined),
-                    iconSize: 30,
-                    color: Colors.black45,
-                    onPressed: () {},
-                  ),
-                  Text(
-                    "طلبات",
-                    style: TextStyle(
-                        color: Colors.black45,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.local_shipping_outlined),
-                    iconSize: 30,
-                    color: Colors.black45,
-                    onPressed: () {},
-                  ),
-                  Text(
-                    "المندوب",
-                    style: TextStyle(
-                        color: Colors.black45,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.search_outlined),
-                    iconSize: 30,
-                    color: Colors.black45,
-                    onPressed: () {},
-                  ),
-                  Text(
-                    "بحث",
-                    style: TextStyle(
-                        color: Colors.black45,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  IconButton(
-                    icon: Icon(Icons.home_filled),
-                    iconSize: 30,
-                    color: Colors.green,
-                    onPressed: () {},
-                  ),
-                  Text(
-                    "رئيسية",
-                    style: TextStyle(
-                        color: Colors.green,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
       appBar: AppBar(
         elevation: 1,
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 220, top: 5),
+            padding: const EdgeInsets.only(
+              right: 220,
+            ),
             child: Icon(
               Icons.notifications_none_rounded,
               color: Colors.grey,
@@ -136,7 +35,10 @@ class _TotersCloneState extends State<TotersClone> {
           Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 20, right: 2, top: 5),
+                padding: EdgeInsets.only(
+                  left: 20,
+                  right: 2,
+                ),
                 child: Text(
                   " توصيل إلى ",
                   style: TextStyle(
@@ -198,7 +100,7 @@ class _TotersCloneState extends State<TotersClone> {
                 ),
                 Icon(
                   Icons.logout,
-                  color: Colors.green,
+                  color: Colors.teal,
                   size: 22,
                 ),
               ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Home_Toters.dart';
+import 'Screens/bottom_navigation_bar.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
         const Duration(seconds: 3),
         () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => TotersClone()),
+              MaterialPageRoute(builder: (context) => Bottom_Nav_Bar()),
             ));
   }
 

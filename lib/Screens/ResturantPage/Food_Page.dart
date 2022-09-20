@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../AppData/Data.dart';
+import '../HomePage/Home_Toters.dart';
+import '../MealPage/Meal.dart';
+
 class FoodPage extends StatefulWidget {
   final String Image;
   final String Name;
@@ -28,6 +32,8 @@ class FoodPage extends StatefulWidget {
   @override
   State<FoodPage> createState() => _FoodPageState();
 }
+
+int buttonSelected = 1;
 
 class _FoodPageState extends State<FoodPage> {
   @override
@@ -264,7 +270,7 @@ class _FoodPageState extends State<FoodPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(right: 175, top: 5),
+                      padding: const EdgeInsets.only(right: 160, top: 5),
                       child: Icon(
                         Icons.arrow_back_ios_new_rounded,
                         color: Colors.green,
@@ -426,7 +432,7 @@ class _FoodPageState extends State<FoodPage> {
                       size: 25,
                     ),
                     SizedBox(
-                      width: 180,
+                      width: 160,
                     ),
                     Text(
                       "إكتب تعليق",
@@ -453,8 +459,104 @@ class _FoodPageState extends State<FoodPage> {
                   height: 2,
                   color: Colors.grey.withOpacity(0.1),
                   thickness: 8,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 10, top: 3, bottom: 3),
+                  child: Text(
+                    "شائع",
+                    style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: 300,
+                        width: MediaQuery.of(context).size.width,
+                        child: ListView(
+                          reverse: true,
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            MealCard(MealImage3, "برغر لحم", "IQD  8,000",
+                                "صمون, قطع كرسبي, جبنة شيدر, خس, مايونيز"),
+                            MealCard(
+                                MealImage4,
+                                "سندويش دامسكينو لحم",
+                                "IQD  8,500",
+                                "صمون, شرائح لحم, جبنة موزاريلا, خس, مايونيز"),
+                            MealCard(MealImage5, "سندويش كرسبي", "IQD  7,000",
+                                "صمون, برغر, جبنة شيدر, خس, صلصة خاصة"),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
                 )
               ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget MealCard(
+      String MealImage, String MealName, String MealPrice, MealDescription) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => MealPage(
+                    M_Image: MealImage,
+                    M_Name: MealName,
+                    M_Price: MealPrice,
+                    M_Descriotion: MealDescription)));
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 8, right: 15),
+                child: Container(
+                  height: 150,
+                  width: MediaQuery.of(context).size.width - 90,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      //   color: Colors.grey.withOpacity(0.6),
+                      image: DecorationImage(
+                          fit: BoxFit.cover, image: AssetImage(MealImage))),
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.only(right: 25, top: 10),
+            child: Text(
+              MealName,
+              style: TextStyle(
+                  color: Colors.black87,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w800),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 25),
+            child: Text(
+              MealPrice,
+              style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold),
             ),
           ),
         ],
